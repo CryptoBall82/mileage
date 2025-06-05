@@ -1,8 +1,9 @@
+
 'use client';
 
 import { AppProvider, useAppContext } from '@/contexts/app-context';
-import { AppHeader } from '@/components/layout/app-header';
-import { BottomNavbar } from '@/components/layout/bottom-navbar';
+import { DefaultHeader } from '@/components/layout/DefaultHeader'; // Updated import
+import { NavbarTools } from '@/components/layout/NavbarTools'; // Updated import
 import { LogView } from '@/components/views/log-view';
 import { AddTripView } from '@/components/views/add-trip-view';
 import { AddExpenseView } from '@/components/views/add-expense-view';
@@ -31,14 +32,14 @@ function AppContent() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <AppHeader />
+      <DefaultHeader /> {/* Replaced AppHeader */}
       <main 
         className="flex-grow overflow-y-auto"
         style={{ paddingTop: FIXED_HEADER_NAV_HEIGHT, paddingBottom: FIXED_HEADER_NAV_HEIGHT }}
       >
         {renderView()}
       </main>
-      <BottomNavbar />
+      <NavbarTools /> {/* Replaced BottomNavbar */}
     </div>
   );
 }
