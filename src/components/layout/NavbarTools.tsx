@@ -1,9 +1,12 @@
-
 'use client';
 
 import React from 'react';
-import { Users, CalendarDays, Home, Construction, Sparkles } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import SportsBaseballOutlinedIcon from '@mui/icons-material/SportsBaseballOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
+import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import {useRouter} from 'next/navigation';
 
 interface NavbarIconProps {
   name: string;
@@ -13,25 +16,25 @@ interface NavbarIconProps {
 }
 
 const NavbarIcon: React.FC<NavbarIconProps> = ({name, text, onClick, isActive}) => {
-  const iconClassName = isActive ? 'text-black' : 'text-white';
-  const textClassName = `text-xs ${isActive ? 'text-black' : 'text-white'}`;
+  const iconColor = isActive ? 'rgba(0,0,0,1)' : 'rgba(255,255,255,1)';
+  const textColor = isActive ? 'rgba(0,0,0,1)' : 'rgba(255,255,255,1)';
 
   let iconComponent;
   switch (name) {
-    case 'Users': // Changed from Baseball
-      iconComponent = <Users className={iconClassName} size={24} />;
+    case 'Baseball':
+      iconComponent = <SportsBaseballOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
       break;
     case 'Calendar':
-      iconComponent = <CalendarDays className={iconClassName} size={24} />;
+      iconComponent = <CalendarMonthOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
       break;
     case 'Home':
-      iconComponent = <Home className={iconClassName} size={24} />;
+      iconComponent = <CottageOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
       break;
     case 'Tools':
-      iconComponent = <Construction className={iconClassName} size={24} />;
+      iconComponent = <ConstructionOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
       break;
     case 'Auto awesome':
-      iconComponent = <Sparkles className={iconClassName} size={24} />;
+      iconComponent = <AutoAwesomeOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
       break;
     default:
       iconComponent = null;
@@ -40,7 +43,7 @@ const NavbarIcon: React.FC<NavbarIconProps> = ({name, text, onClick, isActive}) 
   return (
     <div className="flex flex-col items-center justify-center cursor-pointer" onClick={onClick}>
       {iconComponent}
-      <span className={textClassName}>{text}</span>
+      <span className="text-xs" style={{color: textColor}}>{text}</span>
     </div>
   );
 };
@@ -53,17 +56,12 @@ const NavbarTools: React.FC = () => {
   const navigateToToolsPage = () => router.push('/toolbox');
   const navigateToOfficiaX_AIPage = () => router.push('/ai-assistant');
 
-  // Determine active route for styling (example, replace with actual logic if needed)
-  // For now, Tools is hardcoded as active as per original code.
-  // const currentPath = router.pathname; // This won't work in app router directly
-  // A more robust solution would involve using usePathname from next/navigation
-
   return (
     <nav
-      className="fixed bottom-0 w-full h-[75px] bg-officiaX-red shadow-[0_-4px_10px_4px_rgba(187,187,187,0)] z-10 flex items-center justify-between px-4"
+      className="fixed bottom-0 w-full h-[75px] bg-[rgba(204,0,0,1)] shadow-[0_-4px_10px_4px_rgba(187,187,187,0)] z-10 flex items-center justify-between px-4"
     >
       <div style={{paddingLeft: '5px'}}>
-        <NavbarIcon name="Users" text="Leagues" onClick={navigateToLeaguesPage} isActive={false} />
+        <NavbarIcon name="Baseball" text="Leagues" onClick={navigateToLeaguesPage} isActive={false} />
       </div>
       <NavbarIcon name="Calendar" text="Schedule" onClick={navigateToSchedulePage} isActive={false} />
       <NavbarIcon name="Home" text="Home" onClick={navigateToHomePage} isActive={false} />
