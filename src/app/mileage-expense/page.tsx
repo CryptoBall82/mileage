@@ -137,6 +137,7 @@ export default function MileageExpenseTrackerPage() {
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px] bg-black text-white">
       {/* Default Header at the top */}
       <DefaultHeader />
+      <img src="/public/assets/Xpenselogo225.png" alt="Xpense Logo" width="225" height="auto" className="mx-auto my-4" />
 
       {/* Main Content Area: Scrolls if content overflows */}
       <div className="flex-grow relative w-full overflow-y-auto p-4">
